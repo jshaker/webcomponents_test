@@ -9,46 +9,30 @@
         var importDocument = document.querySelector('link[rel="import"]').import;
         var template = importDocument.querySelector('#shaker-sidenav');
         var templateContent = document.importNode(template.content, true);
-        var attributes = this.dataset;
-        if(attributes.navelements){
-            var nav = templateContent.querySelector('.mdl-navigation');
-            var navElements = JSON.parse(attributes.navelements);
-            navElements.forEach(function(element){
-                nav.innerHTML += "<a class='mdl-navigation__link' href='"+element.href+"'>"+element.label+"<\a>";
-            });
-        }
-        if(attributes.title){
-            templateContent.querySelector('.mdl-layout-title').innerHTML = attributes.title;
-        }
         shadow.appendChild(templateContent);
     };
 
     ShakerSidenavProto.attachedCallback = function(){
-        var shakerSidenav = document.querySelector('shaker-sidenav#'+this.id);
-        shakerSidenav.setNavElements = function(navelements){
-            this.setAttribute('data-navelements',JSON.stringify(navelements));
+        var sidenavID = this.id;
+        var shakerSidenav = document.querySelector('shaker-sidenav#'+sidenavID);
+        var nav = this.shadows[sidenavID].querySelector('.mdl-navigation');
+        var title = this.shadows[sidenavID].querySelector('.mdl-layout-title');
+        shakerSidenav.setNavElements = function(navElements){
+            var navElementsString = "";
+            navElements.forEach(function(element){
+                navElementsString += "<a class='mdl-navigation__link' href='"+element.href+"'>"+element.label+"<\a>";
+            });
+            nav.innerHTML = navElementsString;
         };
-        shakerSidenav.setTitle = function(title){
-            this.setAttribute('data-title', title);
+        shakerSidenav.setTitle = function(title2){
+            title.innerHTML = title2;
         };
-    };
-
-    ShakerSidenavProto.attributeChangedCallback = function(attrName, oldVal, newVal){
-        switch(attrName){
-            case "data-title":          this.shadows[this.id].querySelector('.mdl-layout-title').innerHTML = newVal;
-                                        return;
-            case "data-navelements":    var nav = this.shadows[this.id].querySelector('.mdl-navigation');
-                                        while (nav.firstChild) {
-                                            nav.removeChild(nav.firstChild);
-                                        }
-                                        var navElements = JSON.parse(newVal);
-                                        navElements.forEach(function(element){
-                                            nav.innerHTML += "<a class='mdl-navigation__link' href='"+element.href+"'>"+element.label+"<\a>";
-                                        });
-                                        return;
-        }
-
-
+        shakerSidenav.addNavElement = function(navElement){
+            nav.innerHTML += "<a class='mdl-navigation__link' href='"+navElement.href+"'>"+navElement.label+"<\a>";
+        };
+        shakerSidenav.clearNavElements = function(){
+            nav.innerHTML = "";
+        };
     };
 
     document.registerElement('shaker-sidenav', {

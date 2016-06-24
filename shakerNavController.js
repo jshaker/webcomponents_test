@@ -11,4 +11,8 @@ window.onload = function(){
 
     shakerSidenav.setTitle('Shaker Tech');
 
+    shakerSidenav.clearNavElements();
+
+    shakerSidenav.addNavElement({href:'#test', label:'I am liking this'});
+
 };
