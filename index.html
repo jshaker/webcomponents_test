@@ -9,19 +9,22 @@
     <script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
     <script>
         window.onload = function(){
+
             var shakerNav = document.querySelector('shaker-nav');
-            shakerNav.setAttribute('data-navelements',JSON.stringify([
-                {href: '#', label: 'Jeremie'},
-                {href: '#', label: 'Shaker'},
-                {href: '#', label: 'Web'},
-                {href: '#', label: 'Components'}
-            ]));
-            shakerNav.setAttribute('data-title', "I love chicken wings");
+
+            shakerNav.setNavElements([
+                {href: '#', label: 'Software'},
+                {href: '#', label: 'Engineering'},
+                {href: '#', label: 'With'},
+                {href: '#', label: 'Web Components'}
+            ]);
+
+            shakerNav.setTitle('Shaker Tech');
+
         };
     </script>
 </head>
 <body>
-    <shaker-nav>
-    </shaker-nav>
+    <shaker-nav />
 </body>
 </html>
