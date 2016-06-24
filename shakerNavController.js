@@ -1,6 +1,6 @@
 window.onload = function(){
 
-    var shakerSidenav = document.querySelector('shaker-sidenav#second');
+    var shakerSidenav = document.querySelector('shaker-sidenav#first');
 
     shakerSidenav.setNavElements([
         {href: '#', label: 'Software'},
