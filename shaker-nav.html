@@ -1,0 +1,66 @@
+<script>
+
+    var ShakerNavProto = Object.create(HTMLElement.prototype);
+    ShakerNavProto.createdCallback = function(){
+        this.shadow = this.createShadowRoot();
+        var importDocument = document.querySelector('link[rel="import"]').import;
+        var template = importDocument.querySelector('#shaker-nav');
+        var templateContent = document.importNode(template.content, true);
+        var attributes = this.dataset;
+        if(attributes.navelements){
+            var nav = templateContent.querySelector('.mdl-navigation');
+            var navElements = JSON.parse(attributes.navelements);
+            navElements.forEach(function(element){
+                var anchor = document.createElement('a');
+                anchor.setAttribute("class","mdl-navigation__link");
+                anchor.setAttribute("href",element.href);
+                anchor.innerHTML = element.label;
+                nav.appendChild(anchor);
+            });
+        }
+        if(attributes.title){
+            templateContent.querySelector('.mdl-layout-title').innerHTML = attributes.title;
+        }
+        this.shadow.appendChild(templateContent);
+    };
+    ShakerNavProto.attributeChangedCallback = function(attrName, oldVal, newVal){
+        switch(attrName){
+            case "data-title":          this.shadow.querySelector('.mdl-layout-title').innerHTML = newVal;
+                                        return;
+            case "data-navelements":    var nav = this.shadow.querySelector('.mdl-navigation');
+                                        while (nav.firstChild) {
+                                            nav.removeChild(nav.firstChild);
+                                        }
+                                        var navElements = JSON.parse(newVal);
+                                        navElements.forEach(function(element){
+                                            var anchor = document.createElement('a');
+                                            anchor.setAttribute("class","mdl-navigation__link");
+                                            anchor.setAttribute("href",element.href);
+                                            anchor.innerHTML = element.label;
+                                            nav.appendChild(anchor);
+                                        });
+                                        return;
+        }
+
+
+    };
+
+    document.registerElement('shaker-nav', {
+        prototype: ShakerNavProto
+    });
+
+</script>
+
+<template id="shaker-nav">
+
+    <style> @import "bower_components/material-design-lite/material.min.css"; </style>
+    <div class="mdl-layout--fixed-drawer">
+        <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title">Title</span>
+            <nav class="mdl-navigation">
+            </nav>
+        </div>
+    </div>
+
+</template>
+
