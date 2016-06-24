@@ -1,8 +1,11 @@
 <script>
 
     var ShakerNavProto = Object.create(HTMLElement.prototype);
+    ShakerNavProto.shadows = {};
+
     ShakerNavProto.createdCallback = function(){
-        this.shadow = this.createShadowRoot();
+        var shadow = this.createShadowRoot();
+        this.shadows[this.id] = shadow;
         var importDocument = document.querySelector('link[rel="import"]').import;
         var template = importDocument.querySelector('#shaker-nav');
         var templateContent = document.importNode(template.content, true);
@@ -17,11 +20,11 @@
         if(attributes.title){
             templateContent.querySelector('.mdl-layout-title').innerHTML = attributes.title;
         }
-        this.shadow.appendChild(templateContent);
+        shadow.appendChild(templateContent);
     };
 
     ShakerNavProto.attachedCallback = function(){
-        var shakerNav = document.querySelector('shaker-nav');
+        var shakerNav = document.querySelector('shaker-nav#'+this.id);
         shakerNav.setNavElements = function(navelements){
             this.setAttribute('data-navelements',JSON.stringify(navelements));
         };
@@ -32,9 +35,9 @@
 
     ShakerNavProto.attributeChangedCallback = function(attrName, oldVal, newVal){
         switch(attrName){
-            case "data-title":          this.shadow.querySelector('.mdl-layout-title').innerHTML = newVal;
+            case "data-title":          this.shadows[this.id].querySelector('.mdl-layout-title').innerHTML = newVal;
                                         return;
-            case "data-navelements":    var nav = this.shadow.querySelector('.mdl-navigation');
+            case "data-navelements":    var nav = this.shadows[this.id].querySelector('.mdl-navigation');
                                         while (nav.firstChild) {
                                             nav.removeChild(nav.firstChild);
                                         }

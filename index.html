@@ -7,24 +7,10 @@
     <link rel="import" href="shaker-nav.html" />
     <script src="bower_components/material-design-lite/material.min.js"></script>
     <script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
-    <script>
-        window.onload = function(){
-
-            var shakerNav = document.querySelector('shaker-nav');
-
-            shakerNav.setNavElements([
-                {href: '#', label: 'Software'},
-                {href: '#', label: 'Engineering'},
-                {href: '#', label: 'With'},
-                {href: '#', label: 'Web Components'}
-            ]);
-
-            shakerNav.setTitle('Shaker Tech');
-
-        };
-    </script>
+    <script src="shakerNavController.js"></script>
 </head>
 <body>
-    <shaker-nav />
+    <shaker-nav id="first"></shaker-nav>
+    <shaker-nav id="second"></shaker-nav>
 </body>
 </html>
