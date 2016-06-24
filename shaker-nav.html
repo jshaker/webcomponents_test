@@ -11,11 +11,7 @@
             var nav = templateContent.querySelector('.mdl-navigation');
             var navElements = JSON.parse(attributes.navelements);
             navElements.forEach(function(element){
-                var anchor = document.createElement('a');
-                anchor.setAttribute("class","mdl-navigation__link");
-                anchor.setAttribute("href",element.href);
-                anchor.innerHTML = element.label;
-                nav.appendChild(anchor);
+                nav.innerHTML += "<a class='mdl-navigation__link' href='"+element.href+"'>"+element.label+"<\a>";
             });
         }
         if(attributes.title){
@@ -33,11 +29,7 @@
                                         }
                                         var navElements = JSON.parse(newVal);
                                         navElements.forEach(function(element){
-                                            var anchor = document.createElement('a');
-                                            anchor.setAttribute("class","mdl-navigation__link");
-                                            anchor.setAttribute("href",element.href);
-                                            anchor.innerHTML = element.label;
-                                            nav.appendChild(anchor);
+                                            nav.innerHTML += "<a class='mdl-navigation__link' href='"+element.href+"'>"+element.label+"<\a>";
                                         });
                                         return;
         }
