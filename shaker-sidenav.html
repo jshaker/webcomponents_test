@@ -17,6 +17,7 @@
         var shakerSidenav = document.querySelector('shaker-sidenav#'+sidenavID);
         var nav = this.shadows[sidenavID].querySelector('.mdl-navigation');
         var title = this.shadows[sidenavID].querySelector('.mdl-layout-title');
+        //var drawer = this.shadows[sidenavID].querySelector('mdl-layout__drawer');
         shakerSidenav.setNavElements = function(navElements){
             var navElementsString = "";
             navElements.forEach(function(element){
@@ -35,6 +36,8 @@
                 nav.removeChild(nav.firstChild);
             }
         };
+
+
     };
 
     document.registerElement('shaker-sidenav', {
@@ -95,7 +98,7 @@
             height: 100%;
             max-height: 100%;
             position: absolute;
-            top: 0;
+            top: inherit;
             left: 0;
             box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
             box-sizing: border-box;

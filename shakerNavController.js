@@ -1,18 +1,13 @@
 window.onload = function(){
 
     var shakerSidenav = document.querySelector('shaker-sidenav#first');
-
     shakerSidenav.setNavElements([
-        {href: '#', label: 'Software'},
-        {href: '#', label: 'Engineering'},
-        {href: '#', label: 'With'},
-        {href: '#', label: 'Web Components'}
+        {href: '#', label: 'About'},
+        {href: '#', label: 'Demos'},
+        {href: '#', label: 'Contact Us'}
     ]);
 
-    shakerSidenav.setTitle('Shaker Tech');
+    shakerSidenav.setTitle('Menu');
 
-    shakerSidenav.clearNavElements();
-
-    shakerSidenav.addNavElement({href:'#test', label:'I am liking this'});
 
 };
