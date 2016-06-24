@@ -1,0 +1,223 @@
+<script>
+
+    var ShakerSidenavProto = Object.create(HTMLElement.prototype);
+    ShakerSidenavProto.shadows = {};
+
+    ShakerSidenavProto.createdCallback = function(){
+        var shadow = this.createShadowRoot();
+        this.shadows[this.id] = shadow;
+        var importDocument = document.querySelector('link[rel="import"]').import;
+        var template = importDocument.querySelector('#shaker-sidenav');
+        var templateContent = document.importNode(template.content, true);
+        var attributes = this.dataset;
+        if(attributes.navelements){
+            var nav = templateContent.querySelector('.mdl-navigation');
+            var navElements = JSON.parse(attributes.navelements);
+            navElements.forEach(function(element){
+                nav.innerHTML += "<a class='mdl-navigation__link' href='"+element.href+"'>"+element.label+"<\a>";
+            });
+        }
+        if(attributes.title){
+            templateContent.querySelector('.mdl-layout-title').innerHTML = attributes.title;
+        }
+        shadow.appendChild(templateContent);
+    };
+
+    ShakerSidenavProto.attachedCallback = function(){
+        var shakerSidenav = document.querySelector('shaker-sidenav#'+this.id);
+        shakerSidenav.setNavElements = function(navelements){
+            this.setAttribute('data-navelements',JSON.stringify(navelements));
+        };
+        shakerSidenav.setTitle = function(title){
+            this.setAttribute('data-title', title);
+        };
+    };
+
+    ShakerSidenavProto.attributeChangedCallback = function(attrName, oldVal, newVal){
+        switch(attrName){
+            case "data-title":          this.shadows[this.id].querySelector('.mdl-layout-title').innerHTML = newVal;
+                                        return;
+            case "data-navelements":    var nav = this.shadows[this.id].querySelector('.mdl-navigation');
+                                        while (nav.firstChild) {
+                                            nav.removeChild(nav.firstChild);
+                                        }
+                                        var navElements = JSON.parse(newVal);
+                                        navElements.forEach(function(element){
+                                            nav.innerHTML += "<a class='mdl-navigation__link' href='"+element.href+"'>"+element.label+"<\a>";
+                                        });
+                                        return;
+        }
+
+
+    };
+
+    document.registerElement('shaker-sidenav', {
+        prototype: ShakerSidenavProto
+    });
+
+</script>
+
+<template id="shaker-sidenav">
+    <div class="mdl-layout--fixed-drawer">
+        <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title">Title</span>
+            <nav class="mdl-navigation">
+            </nav>
+        </div>
+    </div>
+    <style>
+        @media screen and (min-width: 1025px) {
+            .mdl-layout--fixed-drawer > .mdl-layout__drawer {
+                -webkit-transform: translateX(0);
+                transform: translateX(0); } }
+
+        @media screen and (min-width: 1025px) {
+            .mdl-layout--fixed-drawer > .mdl-layout__drawer-button {
+                display: none; }
+            .mdl-layout--no-desktop-drawer-button .mdl-layout__drawer-button {
+                display: none; } }
+
+        .mdl-layout--fixed-drawer.is-upgraded:not(.is-small-screen) > .mdl-layout__header {
+            margin-left: 240px;
+            width: calc(100% - 240px); }
+
+        @media screen and (min-width: 1025px) {
+            .mdl-layout--fixed-drawer > .mdl-layout__header .mdl-layout__header-row {
+                padding-left: 40px; } }
+
+        .mdl-layout--fixed-drawer > .mdl-layout__content {
+            margin-left: 240px; }
+
+        @media screen and (max-width: 1024px) {
+            .mdl-layout--fixed-drawer > .mdl-layout__content {
+                margin-left: 0; }
+            .mdl-layout__container.has-scrolling-header .mdl-layout__content {
+                overflow-y: auto;
+                overflow-x: hidden; } }
+
+        .mdl-layout__drawer {
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-flex-direction: column;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            -webkit-flex-wrap: nowrap;
+            -ms-flex-wrap: nowrap;
+            flex-wrap: nowrap;
+            width: 240px;
+            height: 100%;
+            max-height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+            box-sizing: border-box;
+            border-right: 1px solid rgb(224,224,224);
+            background: rgb(250,250,250);
+            -webkit-transform: translateX(-250px);
+            transform: translateX(-250px);
+            -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            will-change: transform;
+            transition-duration: 0.2s;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-property: -webkit-transform;
+            transition-property: transform;
+            transition-property: transform, -webkit-transform;
+            color: rgb(66,66,66);
+            overflow: visible;
+            overflow-y: auto;
+            z-index: 5; }
+
+        .mdl-layout__drawer.is-visible {
+            -webkit-transform: translateX(0);
+            transform: translateX(0); }
+        .mdl-layout__drawer.is-visible ~ .mdl-layout__content.mdl-layout__content {
+            overflow: hidden; }
+        .mdl-layout__drawer > * {
+            -webkit-flex-shrink: 0;
+            -ms-flex-negative: 0;
+            flex-shrink: 0; }
+        .mdl-layout__drawer > .mdl-layout__title,
+        .mdl-layout__drawer > .mdl-layout-title {
+            line-height: 64px;
+            padding-left: 40px; }
+        @media screen and (max-width: 1024px) {
+            .mdl-layout__drawer > .mdl-layout__title,
+            .mdl-layout__drawer > .mdl-layout-title {
+                line-height: 56px;
+                padding-left: 16px; } }
+        .mdl-layout__drawer .mdl-navigation {
+            -webkit-flex-direction: column;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            -webkit-align-items: stretch;
+            -ms-flex-align: stretch;
+            -ms-grid-row-align: stretch;
+            align-items: stretch;
+            padding-top: 16px; }
+        .mdl-layout__drawer .mdl-navigation .mdl-navigation__link {
+            display: block;
+            -webkit-flex-shrink: 0;
+            -ms-flex-negative: 0;
+            flex-shrink: 0;
+            padding: 16px 40px;
+            margin: 0;
+            color: #757575; }
+        @media screen and (max-width: 1024px) {
+            .mdl-layout__drawer .mdl-navigation .mdl-navigation__link {
+                padding: 16px 16px; } }
+        .mdl-layout__drawer .mdl-navigation .mdl-navigation__link:hover {
+            background-color: rgb(224,224,224); }
+        .mdl-layout__drawer .mdl-navigation .mdl-navigation__link--current {
+            background-color: rgb(0,0,0);
+            color: rgb(224,224,224); }
+
+        .mdl-layout-title {
+            display: block;
+            position: relative;
+            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+            font-size: 20px;
+            font-weight: 500;
+            line-height: 1;
+            letter-spacing: 0.02em;
+            font-weight: 400;
+            box-sizing: border-box; }
+
+        .mdl-layout__drawer > .mdl-layout-title {
+            line-height: 64px;
+            padding-left: 40px; }
+
+        @media screen and (max-width: 1024px) {
+            .mdl-layout__drawer > .mdl-layout__title,
+            .mdl-layout__drawer > .mdl-layout-title {
+                line-height: 56px;
+                padding-left: 16px; } }
+
+        .mdl-navigation {
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-flex-wrap: nowrap;
+            -ms-flex-wrap: nowrap;
+            flex-wrap: nowrap;
+            box-sizing: border-box; }
+
+        .mdl-navigation__link {
+            color: rgb(66,66,66);
+            text-decoration: none;
+            margin: 0;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 24px;
+            letter-spacing: 0;
+            opacity: 0.87; }
+
+        .mdl-navigation__link .material-icons {
+            vertical-align: middle; }
+
+
+    </style>
+</template>
+
