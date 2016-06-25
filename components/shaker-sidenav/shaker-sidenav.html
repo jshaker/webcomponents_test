@@ -1,17 +1,16 @@
-<script src="./shaker-sidenav.js"></script>
+<script src="shaker-sidenav.js"></script>
 
 <template id="shaker-sidenav">
 
     <div class="mdl-layout--fixed-drawer">
         <div class="mdl-layout__drawer">
-            <span class="mdl-layout-title">Title</span>
+            <content select="shaker-sidenav-title"></content>
             <nav class="mdl-navigation">
                 <content select="shaker-sidenav-link"></content>
             </nav>
         </div>
     </div>
     <style>
-
         @media screen and (min-width: 1025px) {
             .mdl-layout--fixed-drawer > .mdl-layout__drawer {
                 -webkit-transform: translateX(0);
@@ -85,15 +84,7 @@
             -webkit-flex-shrink: 0;
             -ms-flex-negative: 0;
             flex-shrink: 0; }
-        .mdl-layout__drawer > .mdl-layout__title,
-        .mdl-layout__drawer > .mdl-layout-title {
-            line-height: 64px;
-            padding-left: 40px; }
-        @media screen and (max-width: 1024px) {
-            .mdl-layout__drawer > .mdl-layout__title,
-            .mdl-layout__drawer > .mdl-layout-title {
-                line-height: 56px;
-                padding-left: 16px; } }
+
         .mdl-layout__drawer .mdl-navigation {
             -webkit-flex-direction: column;
             -ms-flex-direction: column;
@@ -104,28 +95,6 @@
             align-items: stretch;
             padding-top: 16px; }
 
-
-        .mdl-layout-title {
-            display: block;
-            position: relative;
-            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-            font-size: 20px;
-            font-weight: 500;
-            line-height: 1;
-            letter-spacing: 0.02em;
-            font-weight: 400;
-            box-sizing: border-box; }
-
-        .mdl-layout__drawer > .mdl-layout-title {
-            line-height: 64px;
-            padding-left: 40px; }
-
-        @media screen and (max-width: 1024px) {
-            .mdl-layout__drawer > .mdl-layout__title,
-            .mdl-layout__drawer > .mdl-layout-title {
-                line-height: 56px;
-                padding-left: 16px; } }
-
         .mdl-navigation {
             display: -webkit-flex;
             display: -ms-flexbox;
@@ -134,9 +103,6 @@
             -ms-flex-wrap: nowrap;
             flex-wrap: nowrap;
             box-sizing: border-box; }
-
-
-
     </style>
 </template>
 
