@@ -1,14 +1,17 @@
-<script src="shaker-sidenav.js"></script>
+<script src="./shaker-sidenav.js"></script>
 
 <template id="shaker-sidenav">
+
     <div class="mdl-layout--fixed-drawer">
         <div class="mdl-layout__drawer">
             <span class="mdl-layout-title">Title</span>
             <nav class="mdl-navigation">
+                <content select="shaker-sidenav-link"></content>
             </nav>
         </div>
     </div>
     <style>
+
         @media screen and (min-width: 1025px) {
             .mdl-layout--fixed-drawer > .mdl-layout__drawer {
                 -webkit-transform: translateX(0);
@@ -100,22 +103,7 @@
             -ms-grid-row-align: stretch;
             align-items: stretch;
             padding-top: 16px; }
-        .mdl-layout__drawer .mdl-navigation .mdl-navigation__link {
-            display: block;
-            -webkit-flex-shrink: 0;
-            -ms-flex-negative: 0;
-            flex-shrink: 0;
-            padding: 16px 40px;
-            margin: 0;
-            color: #757575; }
-        @media screen and (max-width: 1024px) {
-            .mdl-layout__drawer .mdl-navigation .mdl-navigation__link {
-                padding: 16px 16px; } }
-        .mdl-layout__drawer .mdl-navigation .mdl-navigation__link:hover {
-            background-color: rgb(224,224,224); }
-        .mdl-layout__drawer .mdl-navigation .mdl-navigation__link--current {
-            background-color: rgb(0,0,0);
-            color: rgb(224,224,224); }
+
 
         .mdl-layout-title {
             display: block;
@@ -147,19 +135,7 @@
             flex-wrap: nowrap;
             box-sizing: border-box; }
 
-        .mdl-navigation__link {
-            color: rgb(66,66,66);
-            text-decoration: none;
-            margin: 0;
-            font-size: 14px;
-            font-weight: 400;
-            line-height: 24px;
-            letter-spacing: 0;
-            opacity: 0.87;
-            font-family: "Helvetica", "Arial", sans-serif;  }
 
-        .mdl-navigation__link .material-icons {
-            vertical-align: middle; }
 
     </style>
 </template>
