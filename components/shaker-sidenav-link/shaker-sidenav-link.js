@@ -9,7 +9,7 @@
         var href = this.getAttribute("href");
         var anchor = templateContent.querySelector('a');
         anchor.href = href;
-        anchor.innerText = this.innerHTML;
+        anchor.innerHTML = this.innerHTML;
         shadow.appendChild(templateContent);
     };
 

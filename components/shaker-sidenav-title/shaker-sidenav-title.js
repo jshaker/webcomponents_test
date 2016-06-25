@@ -7,7 +7,7 @@
         var template = importDocument.querySelector('#shaker-sidenav-title');
         var templateContent = document.importNode(template.content, true);
         var span = templateContent.querySelector('span');
-        span.innerText = this.innerHTML;
+        span.innerHTML = this.innerHTML;
         shadow.appendChild(templateContent);
     };
 
