@@ -2,45 +2,45 @@
 
 <template id="shaker-sidenav">
 
-    <div class="mdl-layout--fixed-drawer">
-        <div class="mdl-layout__drawer">
+    <div class="shaker-fixed-drawer">
+        <div class="shaker-drawer">
             <content select="shaker-sidenav-title"></content>
-            <nav class="mdl-navigation">
+            <nav class="shaker-navigation">
                 <content select="shaker-sidenav-link"></content>
             </nav>
         </div>
     </div>
     <style>
         @media screen and (min-width: 1025px) {
-            .mdl-layout--fixed-drawer > .mdl-layout__drawer {
+            .shaker-fixed-drawer > .shaker-drawer {
                 -webkit-transform: translateX(0);
                 transform: translateX(0); } }
 
         @media screen and (min-width: 1025px) {
-            .mdl-layout--fixed-drawer > .mdl-layout__drawer-button {
+            .shaker-fixed-drawer > .mdl-layout__drawer-button {
                 display: none; }
             .mdl-layout--no-desktop-drawer-button .mdl-layout__drawer-button {
                 display: none; } }
 
-        .mdl-layout--fixed-drawer.is-upgraded:not(.is-small-screen) > .mdl-layout__header {
+        .shaker-fixed-drawer.is-upgraded:not(.is-small-screen) > .mdl-layout__header {
             margin-left: 240px;
             width: calc(100% - 240px); }
 
         @media screen and (min-width: 1025px) {
-            .mdl-layout--fixed-drawer > .mdl-layout__header .mdl-layout__header-row {
+            .shaker-fixed-drawer > .mdl-layout__header .mdl-layout__header-row {
                 padding-left: 40px; } }
 
-        .mdl-layout--fixed-drawer > .mdl-layout__content {
+        .shaker-fixed-drawer > .mdl-layout__content {
             margin-left: 240px; }
 
         @media screen and (max-width: 1024px) {
-            .mdl-layout--fixed-drawer > .mdl-layout__content {
+            .shaker-fixed-drawer > .mdl-layout__content {
                 margin-left: 0; }
             .mdl-layout__container.has-scrolling-header .mdl-layout__content {
                 overflow-y: auto;
                 overflow-x: hidden; } }
 
-        .mdl-layout__drawer {
+        .shaker-drawer {
             display: -webkit-flex;
             display: -ms-flexbox;
             display: flex;
@@ -75,17 +75,17 @@
             overflow-y: auto;
             z-index: 5; }
 
-        .mdl-layout__drawer.is-visible {
+        .shaker-drawer.is-visible {
             -webkit-transform: translateX(0);
             transform: translateX(0); }
-        .mdl-layout__drawer.is-visible ~ .mdl-layout__content.mdl-layout__content {
+        .shaker-drawer.is-visible ~ .mdl-layout__content.mdl-layout__content {
             overflow: hidden; }
-        .mdl-layout__drawer > * {
+        .shaker-drawer > * {
             -webkit-flex-shrink: 0;
             -ms-flex-negative: 0;
             flex-shrink: 0; }
 
-        .mdl-layout__drawer .mdl-navigation {
+        .shaker-drawer .shaker-navigation {
             -webkit-flex-direction: column;
             -ms-flex-direction: column;
             flex-direction: column;
@@ -95,7 +95,7 @@
             align-items: stretch;
             padding-top: 16px; }
 
-        .mdl-navigation {
+        .shaker-navigation {
             display: -webkit-flex;
             display: -ms-flexbox;
             display: flex;
