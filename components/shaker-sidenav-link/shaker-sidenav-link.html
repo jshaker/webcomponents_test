@@ -1,9 +1,7 @@
 <script src="shaker-sidenav-link.js"></script>
-
 <template id="shaker-sidenav-link">
-    <a class="shaker-sidenav-link"><content></content></a>
     <style>
-        .shaker-sidenav-link {
+        .shaker-navlink {
             display: block;
             -webkit-flex-shrink: 0;
             -ms-flex-negative: 0;
@@ -13,28 +11,9 @@
             color: #757575; }
 
         @media screen and (max-width: 1024px) {
-            .shaker-sidenav-link {
+            .shaker-navlink {
                 padding: 16px 16px; } }
-
-        .shaker-sidenav-link:hover {
+        .shaker-navlink:hover {
             background-color: rgb(224,224,224); }
-
-        .shaker-sidenav-link--current {
-            background-color: rgb(0,0,0);
-            color: rgb(224,224,224); }
-
-        .shaker-sidenav-link {
-            color: rgb(66,66,66);
-            text-decoration: none;
-            margin: 0;
-            font-size: 14px;
-            font-weight: 400;
-            line-height: 24px;
-            letter-spacing: 0;
-            opacity: 0.87;
-            font-family: "Helvetica", "Arial", sans-serif;  }
-
-        .shaker-sidenav-link .material-icons {
-            vertical-align: middle; }
     </style>
 </template>

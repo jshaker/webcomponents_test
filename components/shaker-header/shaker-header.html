@@ -1,17 +1,101 @@
-<template>
+<script src="shaker-header.js"></script>
+<template id="shaker-header">
     <header class="mdl-layout__header">
         <div class="mdl-layout__header-row">
             <!-- Title -->
-            <span class="shaker-sidenav-title">Title</span>
+            <content select="shaker-header-title"></content>
             <!-- Add spacer, to align navigation to the right -->
             <div class="mdl-layout-spacer"></div>
             <!-- Navigation. We hide it in small screens. -->
-            <nav class="shaker-navigation mdl-layout--large-screen-only">
-                <a class="shaker-sidenav-link" href="">Link</a>
-                <a class="shaker-sidenav-link" href="">Link</a>
-                <a class="shaker-sidenav-link" href="">Link</a>
-                <a class="shaker-sidenav-link" href="">Link</a>
-            </nav>
+            <shaker-headernav>
+                <content select="shaker-header-link"></content>
+            </shaker-headernav>
         </div>
     </header>
+    <style>
+        .mdl-layout__header {
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-flex-direction: column;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            -webkit-flex-wrap: nowrap;
+            -ms-flex-wrap: nowrap;
+            flex-wrap: nowrap;
+            -webkit-justify-content: flex-start;
+            -ms-flex-pack: start;
+            justify-content: flex-start;
+            box-sizing: border-box;
+            -webkit-flex-shrink: 0;
+            -ms-flex-negative: 0;
+            flex-shrink: 0;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            border: none;
+            min-height: 64px;
+            max-height: 1000px;
+            z-index: 3;
+            background-color: rgb(63,81,181);
+            color: rgb(255,255,255);
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+            transition-duration: 0.2s;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-property: max-height, box-shadow; }
+
+        @media screen and (max-width: 1024px) {
+            .mdl-layout__header {
+                min-height: 56px; } }
+
+        @media screen and (max-width: 1024px) {
+            .mdl-layout__header {
+                display: none; }
+            .mdl-layout--fixed-header > .mdl-layout__header {
+                display: -webkit-flex;
+                display: -ms-flexbox;
+                display: flex; } }
+
+        .mdl-layout__header-row {
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-flex-direction: row;
+            -ms-flex-direction: row;
+            flex-direction: row;
+            -webkit-flex-wrap: nowrap;
+            -ms-flex-wrap: nowrap;
+            flex-wrap: nowrap;
+            -webkit-flex-shrink: 0;
+            -ms-flex-negative: 0;
+            flex-shrink: 0;
+            box-sizing: border-box;
+            -webkit-align-self: stretch;
+            -ms-flex-item-align: stretch;
+            align-self: stretch;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+            align-items: center;
+            height: 64px;
+            margin: 0;
+            padding: 0 40px 0 80px; }
+        .mdl-layout--no-drawer-button .mdl-layout__header-row {
+            padding-left: 40px; }
+        @media screen and (min-width: 1025px) {
+            .mdl-layout--no-desktop-drawer-button .mdl-layout__header-row {
+                padding-left: 40px; } }
+        @media screen and (max-width: 1024px) {
+            .mdl-layout__header-row {
+                height: 56px;
+                padding: 0 16px 0 72px; }
+            .mdl-layout--no-drawer-button .mdl-layout__header-row {
+                padding-left: 16px; } }
+        .mdl-layout__header-row > * {
+            -webkit-flex-shrink: 0;
+            -ms-flex-negative: 0;
+            flex-shrink: 0; }
+        .mdl-layout__header--scroll .mdl-layout__header-row {
+            width: 100%; }
+
+    </style>
 </template>

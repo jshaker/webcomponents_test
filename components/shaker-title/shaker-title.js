@@ -1,7 +1,7 @@
 (function(){
-    var ShakerSidenavTitleProto = Object.create(HTMLElement.prototype);
+    var ShakerTitleProto = Object.create(HTMLElement.prototype);
 
-    ShakerSidenavTitleProto.createdCallback = function(){
+    ShakerTitleProto.createdCallback = function(){
         var shadow = this.createShadowRoot();
         var importDocument = document.querySelector('#shaker-title').import;
         var importStyling = document.querySelector('#shaker-sidenav-title').import;
@@ -13,8 +13,8 @@
         var span = templateContent.querySelector('span');
         shadow.appendChild(templateContent);
     };
-    
-    document.registerElement('shaker-sidenav-title', {
-        prototype: ShakerSidenavTitleProto
+
+    document.registerElement('shaker-title', {
+        prototype: ShakerTitleProto
     });
 })();

@@ -3,14 +3,23 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Test</title>
-    <link rel="stylesheet" type="text/css" href="bower_components/material-design-lite/material.min.css">
-    <link rel="import" href="components/shaker-sidenav-title/shaker-sidenav-title.html" id="shaker-sidenav-title"/>
+    <link rel="stylesheet" type="text/css" href="bower_components/material-design-lite/material.min.css"/>
+    <link rel="import" href="components/templates/shaker-navlink.html" id="shaker-navlink"/>
+    <link rel="import" href="components/shaker-header-link/shaker-header-link.html" id="shaker-header-link"/>
     <link rel="import" href="components/shaker-sidenav-link/shaker-sidenav-link.html" id="shaker-sidenav-link"/>
+    <link rel="import" href="components/shaker-headernav/shaker-headernav.html" id="shaker-headernav"/>
+    <link rel="import" href="components/shaker-title/shaker-title.html" id="shaker-title"/>
+    <link rel="import" href="components/shaker-sidenav-title/shaker-sidenav-title.html" id="shaker-sidenav-title"/>
     <link rel="import" href="components/shaker-sidenav/shaker-sidenav.html" id="shaker-sidenav"/>
+    <link rel="import" href="components/shaker-header/shaker-header.html" id="shaker-header" />
     <script src="bower_components/material-design-lite/material.min.js"></script>
     <script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
 </head>
 <body>
+    <shaker-header>
+        <shaker-title>Test2</shaker-title>
+        <shaker-header-link href="#test">Test</shaker-header-link>
+    </shaker-header>
     <shaker-sidenav id="first" style="top: 64px;">
         <shaker-sidenav-title>Shaker Tech</shaker-sidenav-title>
         <shaker-sidenav-link href="#about">About</shaker-sidenav-link>

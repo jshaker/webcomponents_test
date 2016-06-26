@@ -1,12 +1,12 @@
 (function(){
-    var ShakerSidenavLinkProto = Object.create(HTMLElement.prototype);
+    var ShakerHeaderLinkProto = Object.create(HTMLElement.prototype);
 
-    ShakerSidenavLinkProto.createdCallback = function(){
+    ShakerHeaderLinkProto.createdCallback = function(){
         var shadow = this.createShadowRoot();
         var importDocument = document.querySelector('#shaker-navlink').import;
-        var importStyling = document.querySelector('#shaker-sidenav-link').import;
+        var importStyling = document.querySelector('#shaker-header-link').import;
         var template = importDocument.querySelector('#shaker-navlink');
-        var style = importStyling.querySelector('#shaker-sidenav-link');
+        var style = importStyling.querySelector('#shaker-header-link');
         var templateContent = document.importNode(template.content, true);
         var styleContent = document.importNode(style.content,true);
         templateContent.appendChild(styleContent);
@@ -16,14 +16,14 @@
         shadow.appendChild(templateContent);
     };
 
-    ShakerSidenavLinkProto.attributeChangedCallback = function(attrName, oldVal, newVal){
+    ShakerHeaderLinkProto.attributeChangedCallback = function(attrName, oldVal, newVal){
         switch(attrName){
             case "href":    this.querySelector('a').href = newVal;
-                            break;
+                break;
         }
     };
 
-    document.registerElement('shaker-sidenav-link', {
-        prototype: ShakerSidenavLinkProto
+    document.registerElement('shaker-header-link', {
+        prototype: ShakerHeaderLinkProto
     });
 })();
