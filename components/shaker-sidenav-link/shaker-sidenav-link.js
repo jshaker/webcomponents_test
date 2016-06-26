@@ -13,6 +13,13 @@
         shadow.appendChild(templateContent);
     };
 
+    ShakerSidenavLinkProto.attributeChangedCallback = function(attrName, oldVal, newVal){
+        switch(attrName){
+            case "href":    this.querySelector('a').href = newVal;
+                            break;
+        }
+    };
+
     document.registerElement('shaker-sidenav-link', {
         prototype: ShakerSidenavLinkProto
     });
