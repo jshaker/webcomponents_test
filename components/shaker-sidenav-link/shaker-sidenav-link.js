@@ -9,8 +9,18 @@
         var href = this.getAttribute("href");
         var anchor = templateContent.querySelector('a');
         anchor.href = href;
-        anchor.innerHTML = this.innerHTML;
+        anchor.innerText = this.innerHTML;
         shadow.appendChild(templateContent);
+    };
+
+    ShakerSidenavLinkProto.attachedCallback = function(){
+        var anchor = this.shadowRoot.querySelector('a');
+        this.addEventListener('DOMSubtreeModified', domSubtreeModifiedHandler.bind(anchor));
+    };
+
+    ShakerSidenavLinkProto.detachedCallback = function(){
+        var anchor = this.shadowRoot.querySelector('a');
+        this.removeEventListener('DOMSubtreeModified', domSubtreeModifiedHandler.bind(anchor));
     };
 
     ShakerSidenavLinkProto.attributeChangedCallback = function(attrName, oldVal, newVal){
@@ -19,6 +29,13 @@
                             break;
         }
     };
+
+    function domSubtreeModifiedHandler(e){
+        if (e.target.length > 0) {
+            this.innerText = e.target.data;
+        }
+    }
+
 
     document.registerElement('shaker-sidenav-link', {
         prototype: ShakerSidenavLinkProto
