@@ -1,11 +1,11 @@
 <script src="shaker-header.js"></script>
 <template id="shaker-header">
-    <header class="mdl-layout__header">
-        <div class="mdl-layout__header-row">
+    <header class="shaker-header">
+        <div class="shaker-header-row">
             <!-- Title -->
-            <content select="shaker-header-title"></content>
+            <content select="shaker-title"></content>
             <!-- Add spacer, to align navigation to the right -->
-            <div class="mdl-layout-spacer"></div>
+            <div class="shaker-spacer"></div>
             <!-- Navigation. We hide it in small screens. -->
             <shaker-header-nav>
                 <content select="shaker-header-link"></content>
@@ -13,7 +13,7 @@
         </div>
     </header>
     <style>
-        .mdl-layout__header {
+        .shaker-header {
             display: -webkit-flex;
             display: -ms-flexbox;
             display: flex;
@@ -45,18 +45,14 @@
             transition-property: max-height, box-shadow; }
 
         @media screen and (max-width: 1024px) {
-            .mdl-layout__header {
+            .shaker-header {
                 min-height: 56px; } }
 
         @media screen and (max-width: 1024px) {
-            .mdl-layout__header {
-                display: none; }
-            .mdl-layout--fixed-header > .mdl-layout__header {
-                display: -webkit-flex;
-                display: -ms-flexbox;
-                display: flex; } }
+            .shaker-header {
+                display: none; }  }
 
-        .mdl-layout__header-row {
+        .shaker-header-row {
             display: -webkit-flex;
             display: -ms-flexbox;
             display: flex;
@@ -79,23 +75,18 @@
             height: 64px;
             margin: 0;
             padding: 0 40px 0 80px; }
-        .mdl-layout--no-drawer-button .mdl-layout__header-row {
-            padding-left: 40px; }
-        @media screen and (min-width: 1025px) {
-            .mdl-layout--no-desktop-drawer-button .mdl-layout__header-row {
-                padding-left: 40px; } }
         @media screen and (max-width: 1024px) {
-            .mdl-layout__header-row {
+            .shaker-header-row {
                 height: 56px;
-                padding: 0 16px 0 72px; }
-            .mdl-layout--no-drawer-button .mdl-layout__header-row {
-                padding-left: 16px; } }
-        .mdl-layout__header-row > * {
+                padding: 0 16px 0 72px; }  }
+        .shaker-header-row > * {
             -webkit-flex-shrink: 0;
             -ms-flex-negative: 0;
             flex-shrink: 0; }
-        .mdl-layout__header--scroll .mdl-layout__header-row {
-            width: 100%; }
 
+        .shaker-spacer {
+            -webkit-flex-grow: 1;
+            -ms-flex-positive: 1;
+            flex-grow: 1; }
     </style>
 </template>

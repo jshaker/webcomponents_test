@@ -4,6 +4,27 @@
         <content select="shaker-header-link"></content>
     </nav>
     <style>
+        .shaker-header-nav {
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-flex-wrap: nowrap;
+            -ms-flex-wrap: nowrap;
+            flex-wrap: nowrap;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            height: 64px;
+            -webkit-flex-direction: row;
+            -ms-flex-direction: row;
+            flex-direction: row;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+            -ms-grid-row-align: center;
+            align-items: center; }
 
+        @media screen and (max-width: 1024px) {
+            .shaker-header-nav {
+                height: 56px; } }
     </style>
 </template>

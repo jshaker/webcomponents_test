@@ -18,7 +18,7 @@
 
     ShakerSidenavLinkProto.attributeChangedCallback = function(attrName, oldVal, newVal){
         switch(attrName){
-            case "href":    this.querySelector('a').href = newVal;
+            case "href":    this.shadowRoot.querySelector('a').href = newVal;
                             break;
         }
     };
