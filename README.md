@@ -7,7 +7,7 @@ There are a few possible benefits to doing such manipulations:
 
 -Separation of concerns: you can now design a component without having to worry about the data. Once again, it is very isolated.
 
--Light Markup: By having re-usable templates, the weight of the HTML transfers drops signficantly as the markup is simplified.
+-Lightweight Markup: By having re-usable templates, the weight of the HTML transfers drops signficantly as the markup is simplified.
 
 An immediate disappointment that I have noticed with this implementation is when creating custom components that require use of attributes. Because I use the content tag to select what's displayed in the Light DOM, the attributes are not transfered to the child.
 
