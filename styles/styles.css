@@ -248,9 +248,9 @@ ul, ol {
     line-height: 24px;
     letter-spacing: 0; }
 
-.shaker-container {
+.x-container {
     margin-left: 250px; }
 
 @media screen and (max-width: 1024px) {
-    .shaker-container {
+    .x-container {
         margin-left: 0px; }  }

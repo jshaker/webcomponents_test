@@ -1,21 +1,21 @@
 <script >
-    createCustomElement('shaker-header','header');
+    createCustomElement('x-header','header');
 </script>
-<template id="shaker-header">
-    <header class="shaker-header">
-        <div class="shaker-header-row">
+<template id="x-header">
+    <header class="x-header">
+        <div class="x-header-row">
             <!-- Title -->
-            <content select="shaker-title"></content>
+            <content select="x-title"></content>
             <!-- Add spacer, to align navigation to the right -->
-            <div class="shaker-spacer"></div>
+            <div class="x-spacer"></div>
             <!-- Navigation. We hide it in small screens. -->
-            <shaker-header-nav>
-                <content select="shaker-header-link"></content>
-            </shaker-header-nav>
+            <x-header-nav>
+                <content select="x-header-link"></content>
+            </x-header-nav>
         </div>
     </header>
     <style>
-        .shaker-header {
+        .x-header {
             display: -webkit-flex;
             display: -ms-flexbox;
             display: flex;
@@ -47,14 +47,14 @@
             transition-property: max-height, box-shadow; }
 
         @media screen and (max-width: 1024px) {
-            .shaker-header {
+            .x-header {
                 min-height: 56px; } }
 
         @media screen and (max-width: 1024px) {
-            .shaker-header {
+            .x-header {
                 display: none; }  }
 
-        .shaker-header-row {
+        .x-header-row {
             display: -webkit-flex;
             display: -ms-flexbox;
             display: flex;
@@ -78,15 +78,15 @@
             margin: 0;
             padding: 0 40px 0 80px; }
         @media screen and (max-width: 1024px) {
-            .shaker-header-row {
+            .x-header-row {
                 height: 56px;
                 padding: 0 16px 0 72px; }  }
-        .shaker-header-row > * {
+        .x-header-row > * {
             -webkit-flex-shrink: 0;
             -ms-flex-negative: 0;
             flex-shrink: 0; }
 
-        .shaker-spacer {
+        .x-spacer {
             -webkit-flex-grow: 1;
             -ms-flex-positive: 1;
             flex-grow: 1; }
