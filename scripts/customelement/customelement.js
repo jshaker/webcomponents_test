@@ -1,4 +1,4 @@
-var createCustomElement = function(elementName, elementSelector, elementExtends){
+var customElement = function(elementName, elementSelector, elementExtends){
     var proto = Object.create(HTMLElement.prototype);
 
     if(elementName == null){
